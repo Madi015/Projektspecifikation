@@ -4,6 +4,7 @@ Madi  = []
 David = []
 Mia   = []
 
+#TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till peron ifall finns mer folk i json fil.
 with open('in_ut.json', 'r') as filereader:
     Data = filereader.read()
     allData = json.loads(Data)
@@ -12,6 +13,7 @@ for X_dic in allData:
         inTime = datetime.strptime(X_dic["incheckning"], '%Y-%m-%dT%H:%M:%S')
         utTime = datetime.strptime(X_dic["utcheckning"], '%Y-%m-%dT%H:%M:%S')
         # Rakna ut antal timmar
+        #TODO skapa en metod har.
         diffTime = timedelta(hours=(utTime.hour - inTime.hour), minutes=(utTime.minute - inTime.minute), seconds=(utTime.second - inTime.second))
         # addera till en list som tillhor samma person 
         Madi.append(diffTime)
@@ -27,3 +29,25 @@ for X_dic in allData:
         Mia.append(diffTime)
     else:
         print("Personen finns inte med i vår system.")
+#TODO maste vara en list som innehaller alla personals arbete.
+MadisArbete = timedelta(hours=0, minutes=0, seconds=0)
+MiasArbete = timedelta(hours=0, minutes=0, seconds=0)
+DavidsArbete = timedelta(hours=0, minutes=0, seconds=0)
+for tid in Madi:
+    MadisArbete += tid
+Timmar = MadisArbete.total_seconds() //3600                      # har raknar jag antal timmar
+MinuterIProcent = (MadisArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
+summaForMadi = Timmar+MinuterIProcent
+print(summaForMadi)
+for tid in Mia:
+    MiasArbete += tid
+Timmar = MiasArbete.total_seconds() //3600                      # har raknar jag antal timmar
+MinuterIProcent = (MiasArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
+summaForMia = Timmar+MinuterIProcent
+print(summaForMia)
+for tid in David:
+    DavidsArbete += tid
+Timmar = DavidsArbete.total_seconds() //3600                      # har raknar jag antal timmar
+MinuterIProcent = (DavidsArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
+summaForDavid = Timmar+MinuterIProcent
+print(summaForDavid)
