@@ -4,7 +4,39 @@ Madi  = []
 David = []
 Mia   = []
 
-#TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till peron ifall finns mer folk i json fil.
+class person:
+    def __init__(self, arbetstid, skatt = 0, semseter = 0, bruttolon = 0, timmlon= 150, nettolon = 0 ):
+        self.arbetstid = arbetstid
+        self.skatt = skatt
+        self.semester = semseter
+        self.bruttolon = bruttolon
+        self.timmlon = timmlon
+        self.nettolon = nettolon
+    def bruttoLonBerakning(self):
+        self.bruttolon = self.arbetstid * self.timmlon
+        return self.bruttolon
+    def skattberakning(self):
+        self.skatt = self.bruttolon * 0.30
+        return self.skatt
+    def NettoLonBerakning(self):
+        self.nettolon = self.bruttolon - self.skatt
+        return self.nettolon
+    def Semester(self):
+        self.semester = self.bruttolon * 0.12
+        return self.semester
+    def __repr__(self):
+        print("------------------------------------------------------------------------")
+        print(f"Arbetstimmar                        |                   {self.arbetstid}")
+        print(f"bruttolön                           |                   {self.bruttolon}")
+        print(f"Skatt                               |                   {self.skatt}")
+        print(f"NettoLön                            |                   {self.nettolon}")
+        print(f"Sparad semseter                     |                   {self.semester}")
+        print(f"                                    |                                   ")
+        print("------------------------------------------------------------------------")
+        print(f"Att betala                          |                   {self.nettolon}")
+        print("------------------------------------------------------------------------") 
+
+#TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till person ifall det finns  mer folk i json fil.
 with open('in_ut.json', 'r') as filereader:
     Data = filereader.read()
     allData = json.loads(Data)
