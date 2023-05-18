@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import json
+#TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till peron ifall finns mer folk i json fil.
 Madi  = []
 David = []
 Mia   = []
@@ -36,12 +37,11 @@ class person:
         print(f"Att betala                          |                   {self.nettolon}")
         print("------------------------------------------------------------------------") 
 
-#TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till person ifall det finns  mer folk i json fil.
 with open('in_ut.json', 'r') as filereader:
-    Data = filereader.read()
-    allData = json.loads(Data)
+    Data = filereader.read()    #read the file
+    allData = json.loads(Data)  #convert to json
 for X_dic in allData:
-    if X_dic["namn"] == "Madi":
+    if X_dic["namn"] == "Madi":     # valja en person
         inTime = datetime.strptime(X_dic["incheckning"], '%Y-%m-%dT%H:%M:%S')
         utTime = datetime.strptime(X_dic["utcheckning"], '%Y-%m-%dT%H:%M:%S')
         # Rakna ut antal timmar
@@ -83,3 +83,21 @@ Timmar = DavidsArbete.total_seconds() //3600                      # har raknar j
 MinuterIProcent = (DavidsArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
 summaForDavid = Timmar+MinuterIProcent
 print(summaForDavid)
+MADI = person(summaForMadi)
+MADI.bruttolon = MADI.bruttoLonBerakning()
+MADI.skatt     = MADI.skattberakning()
+MADI.nettolon = MADI.NettoLonBerakning()
+MADI.semester = MADI.Semester()
+MADI.__repr__()
+MIA = person(summaForMia)
+MIA.bruttolon = MIA.bruttoLonBerakning()
+MIA.skatt     = MIA.skattberakning()
+MIA.nettolon = MIA.NettoLonBerakning()
+MIA.semester = MIA.Semester()
+MIA.__repr__()
+DAVID = person(summaForDavid)
+DAVID.bruttolon = DAVID.bruttoLonBerakning()
+DAVID.skatt     = DAVID.skattberakning()
+DAVID.nettolon = DAVID.NettoLonBerakning()
+DAVID.semester = DAVID.Semester()
+DAVID.__repr__()
