@@ -31,9 +31,9 @@ class person:
     def __repr__(self):
         print("------------------------------------------------------------------------")
         print(f"Arbetstimmar                        |                   {self.arbetstid}")
-        print(f"bruttolön                           |                   {self.bruttolon}")
+        print(f"bruttolï¿½n                           |                   {self.bruttolon}")
         print(f"Skatt                               |                   {self.skatt}")
-        print(f"NettoLön                            |                   {self.nettolon}")
+        print(f"NettoLï¿½n                            |                   {self.nettolon}")
         print(f"Sparad semseter                     |                   {self.semester}")
         print(f"                                    |                                   ")
         print("------------------------------------------------------------------------")
@@ -63,7 +63,7 @@ for X_dic in allData:
         diffTime = timedelta(hours=(utTime.hour - inTime.hour), minutes=(utTime.minute - inTime.minute), seconds=(utTime.second - inTime.second))
         Mia.append(diffTime)
     else:
-        print("Personen finns inte med i vår system.")
+        print("Personen finns inte med i vï¿½r system.")
 #TODO maste vara en list som innehaller alla personals arbete.
 MadisArbete = timedelta(hours=0, minutes=0, seconds=0)
 MiasArbete = timedelta(hours=0, minutes=0, seconds=0)
@@ -117,13 +117,13 @@ bar_positions_salary = np.arange(len(persons)) - bar_width
 bar_positions_tax = np.arange(len(persons))
 bar_positions_holiday = np.arange(len(persons)) + bar_width
 
-ax.bar(bar_positions_salary, netto_lon, bar_width, label='Netto lön', color='blue')
+ax.bar(bar_positions_salary, netto_lon, bar_width, label='Netto lï¿½n', color='blue')
 ax.bar(bar_positions_tax, Skatten, bar_width, label='Skatt', color='red')
-ax.bar(bar_positions_holiday, Smester, bar_width, label='Semester ersättning', color='green')
+ax.bar(bar_positions_holiday, Smester, bar_width, label='Semester ersï¿½ttning', color='green')
 
-ax.set_xlabel('Namn för varje anstäld')
+ax.set_xlabel('Namn fï¿½r varje anstï¿½ld')
 ax.set_ylabel('Kronor')
-ax.set_title('Figuren jämför inkomster för tre anstälda')
+ax.set_title('Figuren jï¿½mfï¿½r inkomster fï¿½r tre anstï¿½lda')
 
 ax.set_xticks(np.arange(len(persons)))
 ax.set_xticklabels(persons)
