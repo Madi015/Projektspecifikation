@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
 import json
+import matplotlib.pyplot as plt
+import numpy as np
+
 #TODO Maste vara en dynamisk. alltsa programmet ska kunna skapa en till peron ifall finns mer folk i json fil.
 Madi  = []
 David = []
@@ -101,3 +104,29 @@ DAVID.skatt     = DAVID.skattberakning()
 DAVID.nettolon = DAVID.NettoLonBerakning()
 DAVID.semester = DAVID.Semester()
 DAVID.__repr__()
+
+# figuren
+persons = ['Madi', 'David', 'Mia']
+netto_lon = [MADI.nettolon, DAVID.nettolon, MIA.nettolon]
+Skatten = [MADI.skatt, DAVID.skatt, MIA.skatt]
+Smester = [MADI.semester, DAVID.semester, MIA.semester]
+fig, ax = plt.subplots()
+bar_width = 0.2
+
+bar_positions_salary = np.arange(len(persons)) - bar_width
+bar_positions_tax = np.arange(len(persons))
+bar_positions_holiday = np.arange(len(persons)) + bar_width
+
+ax.bar(bar_positions_salary, netto_lon, bar_width, label='Netto lön', color='blue')
+ax.bar(bar_positions_tax, Skatten, bar_width, label='Skatt', color='red')
+ax.bar(bar_positions_holiday, Smester, bar_width, label='Semester ersättning', color='green')
+
+ax.set_xlabel('Namn för varje anstäld')
+ax.set_ylabel('Kronor')
+ax.set_title('Figuren jämför inkomster för tre anstälda')
+
+ax.set_xticks(np.arange(len(persons)))
+ax.set_xticklabels(persons)
+
+ax.legend()
+plt.show()
