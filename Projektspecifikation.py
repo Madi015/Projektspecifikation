@@ -31,10 +31,10 @@ class person:
     def __repr__(self):
         print("------------------------------------------------------------------------")
         print(f"Arbetstimmar                        |                   {self.arbetstid}")
-        print(f"bruttol�n                           |                   {self.bruttolon}")
+        print(f"bruttolön                           |                   {self.bruttolon}")
         print(f"Skatt                               |                   {self.skatt}")
-        print(f"NettoL�n                            |                   {self.nettolon}")
-        print(f"Sparad semseter                     |                   {self.semester}")
+        print(f"NettoLön                            |                   {self.nettolon}")
+        print(f"Sparad semseter ersättning          |                   {self.semester}")
         print(f"                                    |                                   ")
         print("------------------------------------------------------------------------")
         print(f"Att betala                          |                   {self.nettolon}")
@@ -63,7 +63,7 @@ for X_dic in allData:
         diffTime = timedelta(hours=(utTime.hour - inTime.hour), minutes=(utTime.minute - inTime.minute), seconds=(utTime.second - inTime.second))
         Mia.append(diffTime)
     else:
-        print("Personen finns inte med i v�r system.")
+        print("Personen finns inte med i vår system.")
 #TODO maste vara en list som innehaller alla personals arbete.
 MadisArbete = timedelta(hours=0, minutes=0, seconds=0)
 MiasArbete = timedelta(hours=0, minutes=0, seconds=0)
@@ -111,13 +111,13 @@ bar_positions_salary = np.arange(len(persons)) - bar_width
 bar_positions_tax = np.arange(len(persons))
 bar_positions_holiday = np.arange(len(persons)) + bar_width
 
-ax.bar(bar_positions_salary, netto_lon, bar_width, label='Netto l�n', color='blue')
+ax.bar(bar_positions_salary, netto_lon, bar_width, label='Netto lön', color='blue')
 ax.bar(bar_positions_tax, Skatten, bar_width, label='Skatt', color='red')
-ax.bar(bar_positions_holiday, Smester, bar_width, label='Semester ers�ttning', color='green')
+ax.bar(bar_positions_holiday, Smester, bar_width, label='Semester ersättning', color='green')
 
-ax.set_xlabel('Namn f�r varje anst�ld')
+ax.set_xlabel('Namn för varje anstäld')
 ax.set_ylabel('Kronor')
-ax.set_title('Figuren j�mf�r inkomster f�r tre anst�lda')
+ax.set_title('Figuren jämför inkomster för tre anstälda')
 
 ax.set_xticks(np.arange(len(persons)))
 ax.set_xticklabels(persons)
@@ -125,26 +125,27 @@ ax.set_xticklabels(persons)
 ax.legend()
 
 kommand = True
-print('Detta program l�ser av in- och utceckningar f�r tre anst�lda och \noch r�knar ut l�n spec och kan j�mf�r olika inkomster. ')
-print('skriv help f�r help')
+print('Detta program läser av in- och utceckningar för tre anstälda och \noch räknar ut lön spec och kan jämför olika inkomster. ')
+print('skriv help för help')
 while kommand != 'quit':
     kommand = input('skriv ett kommand:')
     if kommand == 'help':
-            print('l�n:            f�r att skriva ut l�n spes f�r en person')
-            print('inkomster:      f�r att se figuren')
-            print('quit:           f�r att st�nga av programmet.')
-    elif kommand == 'l�n':
+            print('lön:            för att skriva ut lön spes för en person')
+            print('inkomster:      för att se figuren')
+            print('quit:           för att stänga av programmet.')
+    elif kommand == 'lön':
         person = input('skriv namnet: ')
         if person == 'Madi':
-            print(f'l�nespecifikation f�r {person} �r : ')
+            print(f'lönespecifikation för {person} är : ')
             MADI.__repr__()
         elif person == 'Mia':
-            print(f'l�nespecifikation f�r {person} �r : ')
+            print(f'lönespecifikation för {person} är : ')
             MIA.__repr__()
         elif person == 'David':
-            print(f'l�nespecifikation f�r {person} �r : ')
+            print(f'lönespecifikation för {person} är : ')
             DAVID.__repr__()
         else:
-            print(f'Vi har ingen anst�lld som heter {person}')
+            print(f'Vi har ingen anställd som heter {person}')
     elif kommand == 'inkomster':
         plt.show()
+
