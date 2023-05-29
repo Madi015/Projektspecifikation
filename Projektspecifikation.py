@@ -73,37 +73,31 @@ for tid in Madi:
 Timmar = MadisArbete.total_seconds() //3600                      # har raknar jag antal timmar
 MinuterIProcent = (MadisArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
 summaForMadi = Timmar+MinuterIProcent
-print(summaForMadi)
 for tid in Mia:
     MiasArbete += tid
 Timmar = MiasArbete.total_seconds() //3600                      # har raknar jag antal timmar
 MinuterIProcent = (MiasArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
 summaForMia = Timmar+MinuterIProcent
-print(summaForMia)
 for tid in David:
     DavidsArbete += tid
 Timmar = DavidsArbete.total_seconds() //3600                      # har raknar jag antal timmar
 MinuterIProcent = (DavidsArbete.total_seconds()%3600)/3600        #har tar jag resten som ar kvar och rakna det i procent.
 summaForDavid = Timmar+MinuterIProcent
-print(summaForDavid)
 MADI = person(summaForMadi)
 MADI.bruttolon = MADI.bruttoLonBerakning()
 MADI.skatt     = MADI.skattberakning()
 MADI.nettolon = MADI.NettoLonBerakning()
 MADI.semester = MADI.Semester()
-MADI.__repr__()
 MIA = person(summaForMia)
 MIA.bruttolon = MIA.bruttoLonBerakning()
 MIA.skatt     = MIA.skattberakning()
 MIA.nettolon = MIA.NettoLonBerakning()
 MIA.semester = MIA.Semester()
-MIA.__repr__()
 DAVID = person(summaForDavid)
 DAVID.bruttolon = DAVID.bruttoLonBerakning()
 DAVID.skatt     = DAVID.skattberakning()
 DAVID.nettolon = DAVID.NettoLonBerakning()
 DAVID.semester = DAVID.Semester()
-DAVID.__repr__()
 
 # figuren
 persons = ['Madi', 'David', 'Mia']
@@ -129,4 +123,28 @@ ax.set_xticks(np.arange(len(persons)))
 ax.set_xticklabels(persons)
 
 ax.legend()
-plt.show()
+
+kommand = True
+print('Detta program läser av in- och utceckningar för tre anstälda och \noch räknar ut lön spec och kan jämför olika inkomster. ')
+print('skriv help för help')
+while kommand != 'quit':
+    kommand = input('skriv ett kommand:')
+    if kommand == 'help':
+            print('lön:            för att skriva ut lön spes för en person')
+            print('inkomster:      för att se figuren')
+            print('quit:           för att stänga av programmet.')
+    elif kommand == 'lön':
+        person = input('skriv namnet: ')
+        if person == 'Madi':
+            print(f'lönespecifikation för {person} är : ')
+            MADI.__repr__()
+        elif person == 'Mia':
+            print(f'lönespecifikation för {person} är : ')
+            MIA.__repr__()
+        elif person == 'David':
+            print(f'lönespecifikation för {person} är : ')
+            DAVID.__repr__()
+        else:
+            print(f'Vi har ingen anställd som heter {person}')
+    elif kommand == 'inkomster':
+        plt.show()
