@@ -148,4 +148,3 @@ while kommand != 'quit':
             print(f'Vi har ingen anställd som heter {person}')
     elif kommand == 'inkomster':
         plt.show()
-
